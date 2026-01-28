@@ -144,70 +144,97 @@ az vm create --resource-group "MyResourceGroup" --name "MyVM" --image "UbuntuLTS
 az group delete --name "MyResourceGroup"
 
 
-**10. Azure Resource Manager (ARM) Fundamentals**
-* **Definition:** ARM is the central management layer for Azure. It acts as the "traffic controller" that receives requests from users and forwards them to the Azure Resource Providers.
-* **Interaction Methods:**
-    * CLI (Command Line Interface)
-    * Azure UI (Portal)
-    * SDKs
-    * **IaC Tools:** ARM Templates, Bicep
-* **Standardization:** All requests (whether from the Portal or a script) pass through the **Azure Resource Manager API**, ensuring consistent security and policy enforcement.
+### **10. Azure Resource Manager (ARM) Fundamentals**
 
-**11. Infrastructure as Code: ARM Templates**
-* **Concept:** A native service to automate resource creation using declarative JSON files.
-* **Flow:** `User` -> `ARM Template (JSON)` -> `ARM API` -> `Azure Resources`
-* **Benefit:** Enables consistent, repeatable infrastructure deployment.
+* **Definition**: ARM is the central management layer for Azure that acts as the "traffic controller," receiving requests from users and forwarding them to Azure Resource Providers.
+* **Interaction Methods**:
+* CLI (Command Line Interface)
+* Azure UI (Portal)
+* SDKs
+* **IaC Tools**: ARM Templates, Bicep
 
-**12. IAM - Azure Identity & Access Management**
-* **Authentication (AuthN):** *Who are you?* (Managed via Users & Groups).
-* **Authorization (AuthZ):** *What can you do?* (Managed via Roles & Policies).
-* **Microsoft Entra ID:** The centralized dashboard to manage users, roles, and authorizations.
-* **RBAC (Role-Based Access Control) Workflow:**
-    * Create User.
-    * **Add Assignment:** Assign a specific role (e.g., Contributor) to that user.
-    * **Service Principals:** Special identities created for automation tools (like Terraform/Jenkins) to manage resources securely.
 
-**13. Azure DevOps (ADO) Platform**
-* **What is it?** A Microsoft platform providing a suite of services to optimize the SDLC (Software Development Life Cycle).
+* **Standardization**: Every request, whether from the Portal or a script, passes through the **Azure Resource Manager API** to ensure consistent security and policy enforcement.
+
+### **11. Infrastructure as Code: ARM Templates**
+
+* **Concept**: A native service to automate resource creation using declarative JSON files.
+* **Flow**: `User`  `ARM Template (JSON)`  `ARM API`  `Azure Resources`
+* **Benefit**: Enables consistent, repeatable infrastructure deployment.
+
+### **12. IAM - Azure Identity & Access Management**
+
+* **Authentication (AuthN)**: *Who are you?* (Managed via Users & Groups).
+* **Authorization (AuthZ)**: *What can you do?* (Managed via Roles & Policies).
+* **Microsoft Entra ID**: The centralized dashboard used to manage users, roles, and authorizations.
+* **RBAC (Role-Based Access Control) Workflow**:
+* **Create User**: Define the identity.
+* **Add Assignment**: Assign a specific role (e.g., Contributor) to that user.
+* **Service Principals**: Special identities created for automation tools (like Terraform/Jenkins) to manage resources securely.
+
+
+
+### **13. Azure DevOps (ADO) Platform**
+
+* **What is it?** A Microsoft platform providing a suite of services to optimize the **SDLC** (Software Development Life Cycle).
 * **Why use it?** Reduces time-to-market, improves productivity, and centralizes automation.
-* **Key Services:**
-    * **Azure Boards:** Planning phase (User stories, Tasks).
-    * **Azure Repos:** Version control for code, Terraform scripts, and Ansible playbooks.
-    * **Azure Pipelines:** CI/CD engine (Build -> Test -> Deploy).
-    * **Azure Test Plans:** Management for manual and automated testing.
-    * **Azure Artifacts:** Storage for build outcomes (JAR, WAR, Docker images).
+* **Key Services**:
+* **Azure Boards**: Planning phase (User stories, Tasks).
+* **Azure Repos**: Version control for code, Terraform scripts, and Ansible playbooks.
+* **Azure Pipelines**: CI/CD engine (Build  Test  Deploy).
+* **Azure Test Plans**: Management for manual and automated testing.
+* **Azure Artifacts**: Storage for build outcomes (JAR, WAR, Docker images).
 
-**14. Project: CI Pipeline Setup**
-* **Reference:** [Azure Zero to Hero](https://github.com/iam-veeramalla/Azure-zero-to-hero)
-* **CI Workflow:**
-    `GitHub Push` -> `Unit Test` -> `Static Analysis` -> `Build` -> `Docker Image` -> `Push to ACR`
-* **Setup Steps:**
-    1.  **Repo:** Import code from GitHub and set `main` branch as default.
-    2.  **Container Registry:** Create an **Azure Container Registry (ACR)** via the portal.
-* **Pipeline Configuration (YAML):**
-    * **Trigger:** Set path filters (run only when code changes in specific paths).
-    * **Stages:** Build Stage, Image Push Stage, End-to-End Test.
-    * **Jobs/Steps:** Define tasks like `docker build`.
-    * **Pool:** Name set to `Azure Pipelines` (Hosted Agent).
 
-**15. Azure CD: Continuous Delivery (GitOps)**
-* **Concept:** Modern delivery approach where the Git repository is the "Single Source of Truth."
-* **Flow:** `Git Repo` -> `ArgoCD` -> `Kubernetes Cluster`
-* **Objective:** After the CI pipeline pushes the image, the CD process automatically deploys the new changes to the runtime environment.
-* **Steps:**
-    1.  Create Kubernetes Cluster.
-    2.  Login to K8s.
-    3.  Install and Configure **ArgoCD**.
 
-**16. Azure Kubernetes Service (AKS)**
-* **Deployment Models:**
-    1.  **On-Premises:** Physical VMs (Self-managed data plane & worker nodes). High maintenance for upgrades.
-    2.  **Azure VMs (IaaS):** K8s on Cloud VMs. User still manages OS patching.
-    3.  **AKS (Managed Service):** Azure manages the Control Plane. User manages Node Pools.
-* **AKS Benefits:**
-    * **Auto-Scaling:** Automatically adds nodes during traffic spikes.
-    * **Automatic Upgrades:** Azure handles patching.
-    * **Integrations:** Native support for Load Balancers (LB), Ingress, and Secrets.
-    * **Cost:** Pay only for the worker nodes (VMs).
+### **14. Project: CI Pipeline Setup**
+
+* **Reference**: Based on the *Azure Zero to Hero* project.
+* **CI Workflow**: `GitHub Push`  `Unit Test`  `Static Analysis`  `Build`  `Docker Image`  `Push to ACR`.
+* **Setup Steps**:
+1. **Repo**: Import code from GitHub and set the `main` branch as default.
+2. **Container Registry**: Create an **Azure Container Registry (ACR)** via the portal.
+
+
+* **Pipeline Configuration (YAML)**:
+* **Trigger**: Set path filters to run only when code changes in specific paths.
+* **Stages**: Build Stage, Image Push Stage, End-to-End Test.
+* **Jobs/Steps**: Define tasks like `docker build`.
+* **Pool**: Name set to `Azure Pipelines` (Hosted Agent).
+
+
+
+### **15. Azure CD: Continuous Delivery (GitOps)**
+
+* **Concept**: Modern delivery approach where the Git repository is the **"Single Source of Truth"**.
+* **Flow**: `Git Repo`  `ArgoCD`  `Kubernetes Cluster`.
+* **Objective**: Automatically deploys new changes to the runtime environment after the CI pipeline pushes the image.
+* **Steps**:
+1. Create Kubernetes Cluster.
+2. Login to K8s.
+3. Install and Configure **ArgoCD**.
+
+
+
+### **16. Azure Kubernetes Service (AKS)**
+
+* **Deployment Models**:
+* **On-Premises**: Physical VMs (Self-managed data plane & worker nodes) with high maintenance for upgrades.
+* **Azure VMs (IaaS)**: K8s on Cloud VMs where the user still manages OS patching.
+* **AKS (Managed Service)**: Azure manages the Control Plane; user manages only the Node Pools.
+
+
+* **AKS Benefits**:
+* **Auto-Scaling**: Automatically adds nodes during traffic spikes.
+* **Automatic Upgrades**: Azure handles patching and versioning.
+* **Integrations**: Native support for Load Balancers (LB), Ingress, and Secrets.
+* **Cost**: Pay only for the worker nodes (VM instances).
+
+
+
+---
+
+
+
 
 
