@@ -142,7 +142,7 @@ az vm create --resource-group "MyResourceGroup" --name "MyVM" --image "UbuntuLTS
 
 # 5. Delete a Resource Group (Cleanup)
 az group delete --name "MyResourceGroup"
-
+---
 
 ### **10. Azure Resource Manager (ARM) Fundamentals**
 
@@ -155,13 +155,13 @@ az group delete --name "MyResourceGroup"
 
 
 * **Standardization**: Every request, whether from the Portal or a script, passes through the **Azure Resource Manager API** to ensure consistent security and policy enforcement.
-
+---
 ### **11. Infrastructure as Code: ARM Templates**
 
 * **Concept**: A native service to automate resource creation using declarative JSON files.
 * **Flow**: `User`  `ARM Template (JSON)`  `ARM API`  `Azure Resources`
 * **Benefit**: Enables consistent, repeatable infrastructure deployment.
-
+---
 ### **12. IAM - Azure Identity & Access Management**
 
 * **Authentication (AuthN)**: *Who are you?* (Managed via Users & Groups).
@@ -172,7 +172,7 @@ az group delete --name "MyResourceGroup"
 * **Add Assignment**: Assign a specific role (e.g., Contributor) to that user.
 * **Service Principals**: Special identities created for automation tools (like Terraform/Jenkins) to manage resources securely.
 
-
+---
 
 ### **13. Azure DevOps (ADO) Platform**
 
@@ -185,7 +185,7 @@ az group delete --name "MyResourceGroup"
 * **Azure Test Plans**: Management for manual and automated testing.
 * **Azure Artifacts**: Storage for build outcomes (JAR, WAR, Docker images).
 
-
+---
 
 ### **14. Project: CI Pipeline Setup**
 
@@ -202,7 +202,7 @@ az group delete --name "MyResourceGroup"
 * **Jobs/Steps**: Define tasks like `docker build`.
 * **Pool**: Name set to `Azure Pipelines` (Hosted Agent).
 
-
+---
 
 ### **15. Azure CD: Continuous Delivery (GitOps)**
 
@@ -215,8 +215,8 @@ az group delete --name "MyResourceGroup"
 3. Install and Configure **ArgoCD**.
 
 
-
-### **16. Azure Kubernetes Service (AKS)**
+---
+### **16. **Azure Kubernetes Service (AKS**)**
 
 * **Deployment Models**:
 * **On-Premises**: Physical VMs (Self-managed data plane & worker nodes) with high maintenance for upgrades.
