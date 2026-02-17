@@ -231,6 +231,4 @@ AKS basics
 
 ---
 
-If you want, I can:
-- Convert this into a longer tutorial with commands and step-by-step screenshots.
-- Create example ARM/Bicep templates or Azure CLI scripts for common tasks (VM + Jenkins, Storage account, ACR + Pipeline).
+
